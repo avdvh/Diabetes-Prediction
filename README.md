@@ -17,7 +17,7 @@ The codebase is structured to be modular and reproducible, making it suitable fo
 - Model persistence: Saving the optimized model for future use.
 
 ## Dataset
-
+**Dataset Link**: [Click Here](https://www.kaggle.com/datasets/asinow/diabetes-dataset)
 The code assumes a CSV dataset (`diabetes_dataset.csv`) with numerical and categorical features, including an `Outcome` column as the binary target variable. Example features include `Age`, `BMI`, `Glucose`, `BloodPressure`, `FamilyHistory`, `DietType`, `Hypertension`, and `MedicationUse`. Replace `diabetes_dataset.csv` with the path to your dataset and adjust feature names as needed.
 
 Test Accuracy: 99.58%
