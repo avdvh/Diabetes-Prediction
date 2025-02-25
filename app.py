@@ -45,7 +45,7 @@ if submitted:
     if prediction > 0.5:
         st.error("⚠️ High Risk of Diabetes")
     else:
-        st.success("✅ Low Risk of Diabetes")
+        st.success("Low Risk of Diabetes")
 
     # Show confidence score
     st.write(f"**Confidence Score:** {prediction:.2%}")
