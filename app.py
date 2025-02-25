@@ -2,20 +2,6 @@ import streamlit as st
 import numpy as np
 import tensorflow as tf
 import joblib
-import subprocess
-import sys
-
-# Function to install missing dependencies
-def install_packages():
-    required_packages = ["tensorflow", "streamlit", "numpy", "joblib", "scikit-learn"]
-    for package in required_packages:
-        try:
-            __import__(package)
-        except ImportError:
-            subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-# Ensure all dependencies are installed
-install_packages()
 
 # Load model and scaler
 @st.cache_resource
@@ -36,11 +22,9 @@ st.set_page_config(page_title="Diabetes Prediction", layout="centered")
 st.title("🏥 AI-Powered Diabetes Prediction")
 st.write("**Enter medical details below (with reference value ranges):**")
 
-# Check if model and scaler loaded successfully
 if model is None or scaler is None:
     st.error("❌ Model or Scaler not found! Please check your files.")
 else:
-    # User inputs with value ranges
     with st.form("user_input_form"):
         age = st.number_input("Age (10 - 100 years)", min_value=10, max_value=100, value=50, help="Typical range: 18-90 years")
         bmi = st.number_input("BMI (10 - 50 kg/m²)", min_value=10.0, max_value=50.0, value=25.0, help="Normal: 18.5 - 24.9, Overweight: 25 - 29.9")
@@ -55,13 +39,8 @@ else:
 
     if submitted:
         try:
-            # Convert to numpy array
             features = np.array([[age, bmi, glucose, blood_pressure, hba1c, ldl, hdl, triglycerides]])
-
-            # Scale input data
             features_scaled = scaler.transform(features)
-
-            # Make prediction
             prediction = model.predict(features_scaled)[0][0]
 
             st.subheader("📊 Prediction Result:")
@@ -69,9 +48,6 @@ else:
                 st.error("⚠️ High Risk of Diabetes")
             else:
                 st.success("✅ Low Risk of Diabetes")
-
-            # Show confidence score
             st.write(f"**Confidence Score:** {prediction:.2%}")
-
         except Exception as e:
             st.error(f"🚨 Error during prediction: {e}")
