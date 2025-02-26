@@ -36,3 +36,7 @@ Test Accuracy: 99.58%
 - Built with TensorFlow, Keras, and Keras Tuner.
 - Feature importance analysis powered by SHAP.
 - Dataset preprocessing and visualization supported by Pandas, NumPy, Matplotlib, and Seaborn.
+
+## Notebook:
+[notebook.pdf](https://github.com/user-attachments/files/18978875/notebook.pdf)
+
